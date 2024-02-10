@@ -11,7 +11,12 @@ parser = argparse.ArgumentParser()
 parser.add_argument(
     "--IdExecution", type=str, help="ID of the execution", required=True
 )
-parser.add_argument("--dryRun", type=bool, help="Dry Run", required=False, default=True)
+parser.add_argument(
+    "--dryRun",
+    action=argparse.BooleanOptionalAction,
+    help="Dry Run",
+    required=False,
+)
 args = parser.parse_args()
 
 executionId = args.IdExecution
