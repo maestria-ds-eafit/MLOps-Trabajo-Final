@@ -12,9 +12,9 @@ parser.add_argument("--IdExecution", type=str, help="ID of the execution")
 args = parser.parse_args()
 
 # Check if the directory "./model" exists
-if not os.path.exists("../../data/input_model"):
+if not os.path.exists("data/input_model"):
     # If it doesn't exist, create it
-    os.makedirs("../../data/input_model")
+    os.makedirs("data/input_model")
 
 if args.IdExecution:
     print(f"IdExecution: {args.IdExecution}")
@@ -68,7 +68,7 @@ def load_and_log():
 
         # Load datasets
         X_train, y_train, X_test, y_test = create_train_test_data(
-            "../../data/raw/male_faces/", "../../data/raw/female_faces/"
+            "data/raw/male_faces/", "data/raw/female_faces/"
         )
 
         # Convert to pandas DataFrames for easier CSV handling
@@ -79,8 +79,8 @@ def load_and_log():
         test_df["label"] = y_test
 
         # Save datasets to CSV
-        train_df.to_csv("../../input_model/train_data.csv", index=False)
-        test_df.to_csv("../../input_model/test_data.csv", index=False)
+        train_df.to_csv("data/input_model/train_data.csv", index=False)
+        test_df.to_csv("data/input_model/test_data.csv", index=False)
 
         # 🏺 Create our Artifacts for W&B
         train_data_artifact = wandb.Artifact(
@@ -98,8 +98,8 @@ def load_and_log():
         )
 
         # Add CSV files to the artifacts
-        train_data_artifact.add_file("../../input_model/train_data.csv")
-        test_data_artifact.add_file("../../input_model/test_data.csv")
+        train_data_artifact.add_file("data/input_model/train_data.csv")
+        test_data_artifact.add_file("data/input_model/test_data.csv")
 
         # ✍️ Log the artifacts to W&B
         run.log_artifact(train_data_artifact)
