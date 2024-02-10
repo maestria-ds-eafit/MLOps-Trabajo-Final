@@ -14,7 +14,7 @@ parser.add_argument(
 parser.add_argument(
     "--dryRun",
     action=argparse.BooleanOptionalAction,
-    help="Dry Run",
+    help="Dry Run.",
     required=False,
 )
 args = parser.parse_args()
@@ -59,7 +59,7 @@ def train_and_log(experiment_id=1):
             model_artifact = wandb.Artifact(
                 "trained_model",
                 type="model",
-                description="Trained KNN model",
+                description="Trained KNN model.",
                 metadata=dict(model_config),
             )
             model_artifact.add_file("models_data/trained_model.pkl")
