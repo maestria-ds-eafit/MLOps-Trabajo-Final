@@ -39,7 +39,7 @@ def train_and_log(experiment_id=1):
 
         model_artifact = run.use_artifact("KNN:latest")
         model_dir = model_artifact.download()
-        model_path = os.path.join(model_dir, "initialized_model_KNN.pkl")
+        model_path = os.path.join(model_dir, "KNN.pkl")
         model_config = model_artifact.metadata
 
         with open(model_path, "rb") as f:
