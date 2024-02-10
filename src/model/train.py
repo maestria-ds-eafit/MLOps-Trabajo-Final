@@ -60,7 +60,7 @@ def train_and_log(experiment_id=1):
 
         if not dryRun:
             with open("models_data/trained_model.pkl", "wb") as f:
-                pickle.dumps(model, f)
+                pickle.dump(model, f)
             model_artifact = wandb.Artifact(
                 "trained_model",
                 type="model",
