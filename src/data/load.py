@@ -1,13 +1,13 @@
 import os
 import numpy as np
-from PIL import Image
+from PIL import Image, ImageFile
 from sklearn.model_selection import train_test_split
 from constants import project_name
 import argparse
 import pandas as pd
 import wandb
 
-Image.LOAD_TRUNCATED_IMAGES = True
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--IdExecution", type=str, help="ID of the execution")
