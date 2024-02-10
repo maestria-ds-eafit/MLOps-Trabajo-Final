@@ -7,6 +7,8 @@ import argparse
 import pandas as pd
 import wandb
 
+Image.LOAD_TRUNCATED_IMAGES = True
+
 parser = argparse.ArgumentParser()
 parser.add_argument("--IdExecution", type=str, help="ID of the execution")
 args = parser.parse_args()
