@@ -15,4 +15,3 @@ def log_metrics(wandbRun, y_true, y_pred, dryRun=True):
     if not dryRun:
         print("Logging metrics to wandb...")
         wandbRun.summary["accuracy"] = accuracy
-        wandbRun.summary.update()
