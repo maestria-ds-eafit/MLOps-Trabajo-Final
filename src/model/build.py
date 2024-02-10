@@ -25,9 +25,7 @@ def build_model_and_log(config, model, model_name, model_description):
         project=project_name,
         name=f"Initialize KNN Model Execution Id-{args.IdExecution}",
         job_type="initialize-model",
-        config=config,
     ) as run:
-        config = wandb.config
         model_artifact = wandb.Artifact(
             model_name,
             type="model",
