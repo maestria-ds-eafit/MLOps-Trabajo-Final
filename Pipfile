@@ -8,6 +8,8 @@ wandb = "*"
 numpy = "*"
 scikit-learn = "*"
 notebook = "*"
+pandas = "*"
+pillow = "*"
 
 [dev-packages]
 
