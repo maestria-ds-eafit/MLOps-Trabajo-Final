@@ -15,9 +15,9 @@ args = parser.parse_args()
 print(f"IdExecution: {args.IdExecution}")
 
 # Check if the directory "./model" exists
-if not os.path.exists("./model"):
+if not os.path.exists("./models_data"):
     # If it doesn't exist, create it
-    os.makedirs("./model")
+    os.makedirs("./models_data")
 
 
 def build_model_and_log(config, model, model_name, model_description):

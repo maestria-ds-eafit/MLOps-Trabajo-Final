@@ -44,7 +44,7 @@ def test_and_log(experiment_id=1):
             trained_model = pickle.load(f)
 
         y_train, y_pred = predict(trained_model, test_dataset)
-        log_metrics(run, y_train, y_pred, dryRun)
+        log_metrics(run, y_train, y_pred, dryRun == True)
 
         if not dryRun:
             run.update()

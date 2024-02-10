@@ -11,7 +11,12 @@ parser = argparse.ArgumentParser()
 parser.add_argument(
     "--IdExecution", type=str, help="ID of the execution", required=True
 )
-parser.add_argument("--dryRun", type=bool, help="Dry Run", required=False, default=True)
+parser.add_argument(
+    "--dryRun",
+    action=argparse.BooleanOptionalAction,
+    help="Dry Run",
+    required=False,
+)
 args = parser.parse_args()
 
 executionId = args.IdExecution
@@ -21,9 +26,9 @@ dryRun = args.dryRun
 def train(model, trainining_dataset):
     X_train = trainining_dataset.drop("label", axis=1)
     y_train = trainining_dataset["label"]
-    model.fit(X_train, y_train)
+    trained_model = model.fit(X_train, y_train)
     y_pred = model.predict(X_train)
-    return y_train, y_pred
+    return trained_model, y_train, y_pred
 
 
 def train_and_log(experiment_id=1):
@@ -45,17 +50,19 @@ def train_and_log(experiment_id=1):
         with open(model_path, "rb") as f:
             model = pickle.load(f)
 
-        y_train, y_pred = train(model, training_dataset)
-        log_metrics(run, y_train, y_pred, dryRun)
+        trained_model, y_train, y_pred = train(model, training_dataset)
+        log_metrics(run, y_train, y_pred, dryRun == True)
 
         if not dryRun:
+            with open("models_data/trained_model.pkl", "wb") as f:
+                pickle.dumps(trained_model, f)
             model_artifact = wandb.Artifact(
                 "trained_model",
                 type="model",
                 description="Trained KNN model",
                 metadata=dict(model_config),
             )
-            model_artifact.add_file("trained_model.pkl")
+            model_artifact.add_file("models_data/trained_model.pkl")
             wandb.save("trained_model.pkl")
             run.log_artifact(model_artifact)
             run.update()
