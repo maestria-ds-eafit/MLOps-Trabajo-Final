@@ -93,7 +93,7 @@ def load_and_log():
         test_data_artifact = wandb.Artifact(
             "test_data",
             type="dataset",
-            description="Test data for gender classification",
+            description="Test data for gender classification.",
             metadata={"source": "custom dataset", "num_samples": len(test_df)},
         )
 

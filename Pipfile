@@ -8,8 +8,9 @@ wandb = "*"
 numpy = "*"
 scikit-learn = "*"
 notebook = "*"
-pandas = "*"
+pandas = "~=2.2.0"
 pillow = "*"
+pyarrow = "~=15.0.0"
 
 [dev-packages]
 
