@@ -4,13 +4,14 @@ verify_ssl = false
 name = "pip_conf_index_global"
 
 [packages]
-wandb = "*"
-numpy = "*"
-scikit-learn = "*"
-notebook = "*"
+wandb = "~=0.16.3"
+numpy = "~=1.26.4"
+scikit-learn = "~=1.4.0"
+notebook = "~=7.0.8"
 pandas = "~=2.2.0"
-pillow = "*"
+pillow = "~=10.2.0"
 pyarrow = "~=15.0.0"
+python-dotenv = "~=1.0.1"
 
 [dev-packages]
 
