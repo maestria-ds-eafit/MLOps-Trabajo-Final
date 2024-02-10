@@ -14,7 +14,7 @@ parser.add_argument(
 parser.add_argument(
     "--dryRun",
     action=argparse.BooleanOptionalAction,
-    help="Dry Run",
+    help="Dry Run.",
     required=False,
 )
 args = parser.parse_args()
