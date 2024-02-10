@@ -4,6 +4,9 @@ verify_ssl = false
 name = "pip_conf_index_global"
 
 [packages]
+wandb = "*"
+numpy = "*"
+scikit-learn = "*"
 
 [dev-packages]
 
