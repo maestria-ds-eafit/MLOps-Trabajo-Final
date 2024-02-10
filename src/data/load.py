@@ -26,14 +26,19 @@ def load_images_from_folder(folder):
     images = []
     labels = []
     for filename in os.listdir(folder):
-        img = Image.open(os.path.join(folder, filename)).resize((400, 600)).convert("L")
-        img_np = np.array(img)
-        images.append(img_np.flatten())  # Flatten the image data
-        if "female" in folder:
-            labels.append(1)
-        else:
-            labels.append(0)
-        img.close()
+        img = Image.open(os.path.join(folder, filename))
+        try:
+            img = img.resize((400, 600)).convert("L")
+            img_np = np.array(img)
+            images.append(img_np.flatten())  # Flatten the image data
+            if "female" in folder:
+                labels.append(1)
+            else:
+                labels.append(0)
+        except:
+            print(f"Error loading image: {filename}")
+        finally:
+            img.close()
     return images, labels
 
 
