@@ -8,7 +8,7 @@ on:
       - "src/model/test.py"
 
 jobs:
-  train_model:
+  test_model:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
