@@ -26,9 +26,9 @@ dryRun = args.dryRun
 def train(model, trainining_dataset):
     X_train = trainining_dataset.drop("label", axis=1)
     y_train = trainining_dataset["label"]
-    trained_model = model.fit(X_train, y_train)
+    model.fit(X_train, y_train)
     y_pred = model.predict(X_train)
-    return trained_model, y_train, y_pred
+    return y_train, y_pred
 
 
 def train_and_log(experiment_id=1):
@@ -50,12 +50,12 @@ def train_and_log(experiment_id=1):
         with open(model_path, "rb") as f:
             model = pickle.load(f)
 
-        trained_model, y_train, y_pred = train(model, training_dataset)
+        y_train, y_pred = train(model, training_dataset)
         log_metrics(run, y_train, y_pred, dryRun == True)
 
         if not dryRun:
             with open("models_data/trained_model.pkl", "wb") as f:
-                pickle.dumps(trained_model, f)
+                pickle.dumps(model, f)
             model_artifact = wandb.Artifact(
                 "trained_model",
                 type="model",
