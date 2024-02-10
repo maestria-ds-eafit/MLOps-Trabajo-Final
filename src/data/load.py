@@ -7,8 +7,6 @@ import argparse
 import pandas as pd
 import wandb
 
-ImageFile.LOAD_TRUNCATED_IMAGES = True
-
 parser = argparse.ArgumentParser()
 parser.add_argument("--IdExecution", type=str, help="ID of the execution")
 args = parser.parse_args()
@@ -27,12 +25,13 @@ def load_images_from_folder(folder):
     labels = []
     for filename in os.listdir(folder):
         img = Image.open(os.path.join(folder, filename)).resize((400, 600)).convert("L")
-        img = np.array(img)
-        images.append(img.flatten())  # Flatten the image data
+        img_np = np.array(img)
+        images.append(img_np.flatten())  # Flatten the image data
         if "female" in folder:
             labels.append(1)
         else:
             labels.append(0)
+        img.close()
     return images, labels
 
 
