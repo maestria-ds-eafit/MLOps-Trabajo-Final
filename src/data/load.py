@@ -68,7 +68,7 @@ def load_and_log():
 
         # Load datasets
         X_train, y_train, X_test, y_test = create_train_test_data(
-            "../data/raw/male Faces/", "../data/raw/female Faces/"
+            "../../data/raw/male_faces/", "../../data/raw/female_faces/"
         )
 
         # Convert to pandas DataFrames for easier CSV handling
