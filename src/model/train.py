@@ -58,6 +58,7 @@ def train_and_log(experiment_id=1):
             model_artifact.add_file("trained_model.pkl")
             wandb.save("trained_model.pkl")
             run.log_artifact(model_artifact)
+            run.update()
 
 
 train_and_log(experiment_id)
