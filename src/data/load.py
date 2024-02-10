@@ -27,8 +27,9 @@ def load_images_from_folder(folder):
     labels = []
     for filename in os.listdir(folder):
         img = Image.open(os.path.join(folder, filename))
-        if img.mode != "RGBA":
-            continue
+        if img.format == "PNG":
+            if img.mode != "RGBA":
+                img = img.convert("RGBA")
         try:
             img = img.resize((400, 600)).convert("L")
             img_np = np.array(img)
