@@ -22,6 +22,11 @@ args = parser.parse_args()
 executionId = args.IdExecution
 dryRun = args.dryRun
 
+# Check if the directory "./model" exists
+if not os.path.exists("./models_data"):
+    # If it doesn't exist, create it
+    os.makedirs("./models_data")
+
 
 def train(model, trainining_dataset):
     X_train = trainining_dataset.drop("label", axis=1)
