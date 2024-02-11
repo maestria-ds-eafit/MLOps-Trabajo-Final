@@ -56,7 +56,7 @@ def train_and_log(experiment_id=1):
             model = pickle.load(f)
 
         y_train, y_pred = train(model, training_dataset)
-        log_metrics(run, y_train, y_pred, dryRun == True)
+        log_metrics(run, y_train, y_pred, dryRun)
 
         if not dryRun:
             with open("models_data/trained_model.pkl", "wb") as f:
