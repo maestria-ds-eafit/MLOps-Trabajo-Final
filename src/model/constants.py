@@ -12,7 +12,9 @@ def read_csv(data_dir, filename):
 
 def log_metrics(wandbRun, y_true, y_pred, dryRun=True):
     accuracy = accuracy_score(y_true, y_pred)
-    precision, recall, f1, _ = precision_recall_fscore_support(y_true, y_pred)
+    precision, recall, f1, _ = precision_recall_fscore_support(
+        y_true, y_pred, average="micro"
+    )
     if not dryRun:
         print("Logging metrics to wandb...")
         wandbRun.summary["accuracy"] = accuracy
