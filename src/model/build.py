@@ -2,9 +2,12 @@ from src.knn import knn_model, knn_config
 
 import os
 import argparse
+from dotenv import load_dotenv
 import wandb
 from constants import project_name
 import pickle
+
+load_dotenv()
 
 parser = argparse.ArgumentParser()
 parser.add_argument(

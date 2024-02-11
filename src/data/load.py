@@ -5,7 +5,10 @@ from sklearn.model_selection import train_test_split
 from constants import project_name
 import argparse
 import pandas as pd
+from dotenv import load_dotenv
 import wandb
+
+load_dotenv()
 
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
