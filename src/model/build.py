@@ -36,9 +36,9 @@ def build_model_and_log(config, model, model_name, model_description):
             metadata=dict(config),
         )
         name_artifact_model = f"{model_name}.pkl"
-        with open(f"./model/{name_artifact_model}", "wb") as f:
+        with open(f"./models_data/{name_artifact_model}", "wb") as f:
             pickle.dump(model, f)
-        model_artifact.add_file(f"./model/{name_artifact_model}")
+        model_artifact.add_file(f"./models_data/{name_artifact_model}")
         wandb.save(name_artifact_model)
         run.log_artifact(model_artifact)
 
